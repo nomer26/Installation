@@ -29,7 +29,7 @@ function pc(){
 
 
 
-read -p "Enter The Version of k8s you want : " VERSION
+read -p "Enter The Version of k8s you want  (e.g. 1.21.12-00) : " VERSION
 
 echo "Control plane endpoint set $(hostname -i)"
 CONTROL_IP=$(hostname -i)
@@ -60,51 +60,8 @@ pc "green" "
 
 sudo apt-get install -y kubelet=$VERSION kubeadm=$VERSION kubectl=$VERSION
 
-
-##  Cluster Init
 pc "green" "
 #######################################\n\
-##       Cluster  Init               ##\n\
+## Finished Kubernetes Installation  ##\n\
 #######################################"
-
-
-sudo kubeadm init 
-
-
-pc "green" "
- ^   ^   ^   ^   ^   ^   ^   ^   ^   ^ 
-^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ 
- |   |   |   |   |   |   |   |   |   |
-
-	KUBEADM    JOIN  TOKEN\n"
-
-
-pc "green" "Let's go to configure The Worker nodes with the above information"
-
-## kubectl setting
-pc "green" "
-#######################################\n\
-##       kubectl   setting           ##\n\
-#######################################"
-
-mkdir -p $HOME/.kube
-
-sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
-
-sudo chown $(id -u):$(id -g) $HOME/.kube/config
-
-
-pc "green" "Finished Control Node Conf...  "
-
-
-
-
-
-
-
-
-
-
-
-
 
