@@ -58,7 +58,7 @@ pc "green" "
 #######################################"
 
 
-sudo apt-get install -y kubelet=$VERSION kubeadm=$VERSION kubectl=$VERSION
+sudo apt-get install -y kubelet $VERSION kubeadm $VERSION kubectl $VERSION
 
 pc "green" "
 #######################################\n\
