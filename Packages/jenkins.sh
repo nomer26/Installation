@@ -14,16 +14,18 @@ function pc(){
 	"green") COLOR='\033[0;32m';;
 	"red") COLOR='\033[0;31m';;
 	"blue") COLOR='\033[0;34m';;
-	"yellow") COLOR='\033[0;33';;
-	"cyan") COLOR='\033[0;36';;
-	"white") cOLOR='\033[0;37';;
+	"yellow") COLOR='\033[0;33m';;
+	"cyan") COLOR='\033[0;36m';;
+	"white") COLOR='\033[0;37m';;
+	"light-cyan") COLOR='\033[0;96m';; 
+	"dark-gray") COLOR='\033[1;30m';;
 	"*") COLOR='\033[0m';;
   esac
   echo -e "${COLOR} $2 ${nc}"
 }
 
 
-pc "cyan" "
+pc "green" "
 ###############################\n\
 ##     Java JDK Install      ##\n\
 ###############################"
@@ -31,7 +33,7 @@ pc "cyan" "
 
 sudo apt update
 sudo apt install openjdk-11-jdk
-pc "yellow" "
+pc "red" "
 Java Version is $(java --version)
 "
 JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64
@@ -57,7 +59,7 @@ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key 
 sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
 
 
-pc "green" "
+pc "dark-gray" "
 ###########################\n\
 ## Install Jenkins       ##\n\
 ###########################"
@@ -77,13 +79,13 @@ fi
 pc "red" "$servicename Status : $(systemctl is-active $servicename)"
 
 ### Finish
-pc "green" "
+pc "dark-gray" "
 #######################################\n\
 ## Finished Jenkins Installation     ##\n\
 #######################################"
 
 
-pc "blue" "
+pc "red" "
 Jenkins Server  :  $(curl ifconfig.me):8080 \n\
 \n\
 Your First Administrator password :  $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)"

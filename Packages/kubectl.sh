@@ -41,7 +41,7 @@ sudo apt-get update -y
 
 
 ##  Install  K8S
-pc "green" "
+pc "blue" "
 #####################\n\
 ## Install kubectl ##\n\
 #####################"
@@ -49,7 +49,7 @@ pc "green" "
 
 sudo apt-get install -y kubectl=$VERSION 
 
-pc "green" "
+pc "blue" "
 #######################################\n\
 ## Finished Kubectl Installation  ##\n\
 #######################################"
