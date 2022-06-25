@@ -326,6 +326,25 @@ sudo usermod -aG docker $USER
 
 
 
+pc "green" "
+###############################\n\
+## Install  Ansible          ##\n\
+###############################"
+
+sudo apt update
+sudo apt install ansible -y
+
+
+pc "green" "
+#######################################\n\
+## Finished Kubectl Installation  ##\n\
+#######################################"
+
+
+
+
+
+
 
 pc "red" "\n\
 awscli version : $(aws --version)"
@@ -339,6 +358,8 @@ terraform version : $(terraform version)"
 
 pc "red" "Docker-compose version : $(docker-compose -version)"
 
+pc "red" "
+ansible version : $(ansible --version)"
 
 
 pc "red" " helm version : $(helm version --short)"
@@ -354,4 +375,5 @@ Your First Administrator password :  $(sudo cat /var/lib/jenkins/secrets/initial
 
 
 pc "red" "\n\n\n##  You must reboot this terminal to apply modification ##"
+
 

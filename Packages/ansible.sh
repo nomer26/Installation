@@ -1,7 +1,9 @@
 #!/bin/bash
 
 ##################################
-##    awscli Installation   ##
+
+##    Kubectl   Installation   ##
+
 ##################################
 
 
@@ -24,26 +26,19 @@ function pc(){
 }
 
 
-pc "yellow" "\n\
+pc "green" "
 ###############################\n\
-##     AWS CLI  Install      ##\n\
+## Install  Ansible          ##\n\
 ###############################"
 
-
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-sudo apt install unzip -y
-unzip awscliv2.zip
-sudo ./aws/install
+sudo apt update
+sudo apt install ansible -y
 
 
-pc "yellow" "\n\
-#########################################\n\
-##     Finished  AWS CLI  Install      ##\n\
-#########################################"
+pc "green" "
+#######################################\n\
+## Finished Kubectl Installation  ##\n\
+#######################################"
 
-
-
-
-pc "red" "\n\
-awscli version : $(aws --version)"
-
+pc "red" "
+ansible version : $(ansible --version)"
