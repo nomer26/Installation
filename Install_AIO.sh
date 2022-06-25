@@ -25,7 +25,7 @@ pc "green" "
 
 
 sudo apt update
-sudo apt install openjdk-11-jdk
+sudo apt install openjdk-11-jdk -y
 pc "red" "
 Java Version is $(java --version)
 "
