@@ -50,4 +50,8 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io -y
 
 pc "green" " Finished  Docker Installation... "
 
+sudo usermod -aG docker $USER
 
+docker version | grep -iB 2 version
+
+pc "red" "\n\n\n##  You must reboot this terminal to apply modification ##"
