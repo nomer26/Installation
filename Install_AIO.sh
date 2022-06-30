@@ -282,7 +282,6 @@ pc "blue" "
 
 
 
-
 ## SW pkg for APT Repository 
 pc "green" "
 ###############################\n\
@@ -347,28 +346,39 @@ pc "green" "
 
 
 pc "red" "\n\
-awscli version : $(aws --version)"
-
-
-pc "red" "eksctl version : $(eksctl version)"
+#############  AWS VERSION   ###############\n\
+ $(aws --version)"
 
 
 pc "red" "\n\
-terraform version : $(terraform version)"
+#############  EKSCTL VERSION   ###############\n\
+ $(eksctl version)"
 
-pc "red" "Docker-compose version : $(docker-compose -version)"
 
-pc "red" "
+pc "red" "\n\
+#############  TERRAFORM VERSION   ###############\n\
+ $(terraform version)"
+
+pc "red" "\n\
+#############  DOCKER_COMPOSE VERSION   ###############\n\
+Docker-compose version : $(docker-compose -version)"
+
+pc "red" "\n\
+#############  ANSIBLE VERSION   ###############\n\
 ansible version : $(ansible --version)"
 
 
-pc "red" " helm version : $(helm version --short)"
+pc "red" "\n\
+#############  HELM VERSION   ###############\n\
+helm version : $(helm version --short)"
 
 
-pc "red" " docker version : \n\
+pc "red" "\n\
+#############  DOCKER VERSION   ###############\n\
 	$(docker version | grep -iB 2 version)"
 
-pc "red" "
+pc "red" "\n\
+#############  JENKINS VERSION   ###############\n\
 Jenkins Server  :  $(curl ifconfig.me):8080 \n\
 \n\
 Your First Administrator password :  $(sudo cat /var/lib/jenkins/secrets/initialAdminPassword)"
@@ -376,4 +386,14 @@ Your First Administrator password :  $(sudo cat /var/lib/jenkins/secrets/initial
 
 pc "red" "\n\n\n##  You must reboot this terminal to apply modification ##"
 
-
+pc "yellow" "\n\
+##################   Auto Completion Settings  #################\n\
+\n\
+echo 'source <(kubectl completion bash)' >> ~/.bashrc\n\
+\n\
+echo 'k=kubectl' >> ~/.bashrc
+\n\
+echo 'complete -o default -F __start_kubectl k' >> ~/.bashrc\n\
+\n\
+\n\
+helm completion bash > /etc/bash_completion.d/helm"
