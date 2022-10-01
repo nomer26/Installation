@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##################################
-##    Terraform Installation   ##
+##    Terragrunt Installation   ##
 ##################################
 
 
@@ -26,25 +26,28 @@ function pc(){
 
 pc "magenta" "\n\
 ###############################\n\
-##     Terraform  Install    ##\n\
+##     Terragrunt  Install    ##\n\
 ###############################"
 
-sudo apt-get update && sudo apt-get install -y gnupg software-properties-common curl
-curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get update && sudo apt-get install terraform
+wget https://github.com/gruntwork-io/terragrunt/releases/download/v0.39.0/terragrunt_linux_amd64
+
+sudo mv terragrunt_linux_amd64 terragrunt
+
+sudo chmod u+x terragrunt
+
+sudo mv terragrunt /usr/local/bin/terragrunt
+
+if [[ ! $PATH =~ "/usr/local/bin" ]];
+then
+  export PATH=$PATH:/usr/local/bin
+fi
+
 
 pc "magenta" "\n\
 #########################################\n\
-##     Finished  Terraform  Install    ##\n\
+##     Finished  Terragrunt  Install    ##\n\
 #########################################"
 
-pc "green" "
-##################################\n\
-##  Terraform  autocomplete     ##\n\
-##################################"
-
-terraform -install-autocomplete
 
 pc "red" "\n\
-terraform version : $(terraform version)"
+terragrunt version : $(terragrunt -v)"
