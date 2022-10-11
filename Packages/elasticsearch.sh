@@ -32,10 +32,10 @@ done
 
 ## Add ES repository
 
-OSTYPE=$(awk -F = 'NR==4 {print $2;}' /etc/*release)
+OSTYPE=$(cat /etc/*release | egrep '^ID=' | cut -d= -f2)
+echo $OSTYPE
 
-
-if [[ "$OSTYPE" == "\"ubuntu\"" ]];
+if [[ "$OSTYPE" == "ubuntu" ]];
 then
   
   pc "magenta" "\n\
@@ -57,7 +57,7 @@ then
   ############################################"
 fi
 
-if [[ "$OSTYPE" == "\"centos\"" ]];
+if [[ "$OSTYPE" == "centos" ]];
 then
 
    pc "magenta" "\n\
