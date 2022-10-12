@@ -57,7 +57,7 @@ then
 
     tar zxf elasticsearch-8.4.3-linux-x86_64.tar.gz
 
-    mv elasticsearch-8.4.3-linux-x86_64.tar.gz es-8
+    mv elasticsearch-8.4.3 es-8
 
   elif [ "$VERSION" -eq 7 ];
   then
@@ -65,7 +65,7 @@ then
 
     tar zxf elasticsearch-7.17.1-linux-x86_64.tar.gz
 
-    mv elasticsearch-7.17.1-linux-x86_64.tar.gz es-7
+    mv elasticsearch-7.17.1 es-7
   else
     echo "Not Support"
   fi
