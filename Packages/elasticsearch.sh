@@ -32,10 +32,53 @@ done
 
 ## Add ES repository
 
-OSTYPE=$(cat /etc/*release | egrep '^ID=' | cut -d= -f2)
-echo $OSTYPE
+#OSTYPE=$(cat /etc/*release | egrep '^ID=' | cut -d= -f2)
+#echo $OSTYPE
 
-if [[ "$OSTYPE" == "ubuntu" ]];
+INSTALLER=
+
+while [ -z $INSTALLER ]
+do
+  read -p "Set How to install ES (e.g. tar.gz, apt, yum .. ) : " INSTALLER
+done
+
+if [[ "$INSTALLER" == "tar.gz" ]];
+then
+
+  pc "magenta" "\n\
+  ###############################\n\
+  ## Elastic Search Install    ##\n\
+  ###############################"
+
+  if [ "$VERSION" -eq 8 ];
+  then
+  
+    curl -O -L https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-8.4.3-linux-x86_64.tar.gz
+
+    tar zxf elasticsearch-8.4.3-linux-x86_64.tar.gz
+
+    mv elasticsearch-8.4.3-linux-x86_64.tar.gz es-8
+
+  elif [ "$VERSION" -eq 7 ];
+  then
+    curl -O -L https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.17.1-linux-x86_64.tar.gz
+
+    tar zxf elasticsearch-7.17.1-linux-x86_64.tar.gz
+
+    mv elasticsearch-7.17.1-linux-x86_64.tar.gz es-7
+  else
+    echo "Not Support"
+  fi
+
+  pc "magenta" "\n\
+  ############################################\n\
+  ##     Finished  ElasticSearch Install    ##\n\
+  ############################################"
+fi
+
+
+
+if [[ "$INSTALLER" == "ubuntu" ]];
 then
   
   pc "magenta" "\n\
@@ -57,7 +100,7 @@ then
   ############################################"
 fi
 
-if [[ "$OSTYPE" == "centos" ]];
+if [[ "$INSTALLER" == "centos" ]];
 then
 
    pc "magenta" "\n\
@@ -69,11 +112,11 @@ then
   
   sudo bash -c 'cat <<EOF > /etc/yum.repos.d/elasticsearch.repo
 [elasticsearch]
-name=Elasticsearch repository for ${VERSION}.x packages
-baseurl=https://artifacts.elastic.co/packages/${VERSION}.x/yum
+name=Elasticsearch repository for '${VERSION}'.x packages
+baseurl=https://artifacts.elastic.co/packages/'${VERSION}'.x/yum
 gpgcheck=1
 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
-enabled=0
+enabled=1
 autorefresh=1
 type=rpm-md
 EOF'
