@@ -57,7 +57,7 @@ then
 
     tar zxf kibana-8.4.3-linux-x86_64.tar.gz
 
-    mv kibana-8.4.3 kb-8
+    mv kibana-8.4.3-linux-x86_64 kb-8
 
   elif [ "$VERSION" -eq 7 ];
   then
@@ -65,7 +65,7 @@ then
 
     tar zxf kibana-7.17.1-linux-x86_64.tar.gz
 
-    mv kibana-7.17.1 kb-7
+    mv kibana-7.17.1-linux-x86_64  kb-7
   else
     echo "Not Support"
   fi
