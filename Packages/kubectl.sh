@@ -56,6 +56,14 @@ pc "blue" "
 
 sudo apt-get install -y kubectl=$VERSION 
 
+cat <<EOF >> ~/.bashrc
+source <(kubectl completion bash)
+alias k=kubectl
+alias k='kubectl get pod'
+complete -F __start_kubectl k
+EOF
+
+
 pc "blue" "
 #######################################\n\
 ## Finished Kubectl Installation  ##\n\
